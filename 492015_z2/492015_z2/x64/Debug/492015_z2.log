@@ -1,0 +1,3 @@
+﻿  main.cpp
+E:\VISUAL STUDIO\c++ pmf\492015_z2\492015_z2\main.cpp(14,14): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  492015_z2.vcxproj -> E:\VISUAL STUDIO\c++ pmf\492015_z2\x64\Debug\492015_z2.exe
