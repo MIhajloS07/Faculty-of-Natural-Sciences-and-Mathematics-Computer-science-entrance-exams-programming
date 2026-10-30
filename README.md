@@ -11,7 +11,7 @@
 <br/><br/>
 
 ![Tasks](https://img.shields.io/badge/tasks-TODO-38bdf8?style=for-the-badge)
-![Language](https://img.shields.io/badge/language-TODO-a78bfa?style=for-the-badge)
+![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-4ade80?style=for-the-badge)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-f472b6?style=for-the-badge)
 
@@ -54,11 +54,14 @@ The goal is to help future students prepare: to see how tasks look year after ye
 │   ├── june/
 │   │   ├── task1/
 │   │   │   ├── task.md        # task statement
-│   │   │   ├── solution.*     # solution
-│   │   │   └── test/          # sample inputs/outputs
+│   │   │   ├── solution.cpp   # C++ solution
+│   │   │   └── test/          # input1.txt, output1.txt, ...
 │   │   └── ...
 │   └── september/
 ├── 2024/
+├── Makefile               # build & test everything
+├── run.sh                 # run a single task
+├── .gitignore
 ├── README.md              # English
 ├── README.sr.md           # Serbian
 ├── CONTRIBUTING.md
@@ -69,40 +72,40 @@ The goal is to help future students prepare: to see how tasks look year after ye
 
 ## 🚀 Running the code
 
-<!-- TODO: keep only the section for the language you use -->
+Everything in this repository is written in **C++17**. You only need a compiler (`g++` or `clang++`).
 
-<details>
-<summary><b>C / C++</b></summary>
+| OS | Install |
+|----|---------|
+| 🐧 Linux | `sudo apt install g++ make` |
+| 🍎 macOS | `xcode-select --install` |
+| 🪟 Windows | [MSYS2](https://www.msys2.org/) or WSL, then `pacman -S mingw-w64-ucrt-x86_64-gcc make` |
+
+**Single task, manually:**
 
 ```bash
-g++ -std=c++17 -O2 -Wall -o solution solution.cpp
+g++ -std=c++17 -O2 -Wall -Wextra -o solution solution.cpp
 ./solution < test/input1.txt
 ```
-</details>
 
-<details>
-<summary><b>Python</b></summary>
+**Single task, with the helper script** (compiles, runs every test and compares the output):
 
 ```bash
-python3 solution.py < test/input1.txt
+bash run.sh 2023/june/task1
 ```
-</details>
 
-<details>
-<summary><b>Java</b></summary>
+```text
+▶ Compiling 2023/june/task1/solution.cpp ...
+✅ test 1 passed
+✅ test 2 passed
+❌ test 3 failed
+```
+
+**The whole repository:**
 
 ```bash
-javac Solution.java
-java Solution < test/input1.txt
+make test     # compile and test every task
+make clean    # remove compiled binaries
 ```
-</details>
-
-Check the output:
-
-```bash
-./solution < test/input1.txt | diff - test/output1.txt && echo "✅ Correct"
-```
-
 ---
 
 ## 🧠 Topics covered
@@ -110,10 +113,10 @@ Check the output:
 | Topic | Typical tasks | Difficulty |
 |-------|---------------|:----------:|
 | 🔢 Math and numbers | digits, GCD/LCM, primes, divisibility | ⭐ |
-| 📦 Arrays and matrices | traversal, rotation, spiral output | ⭐⭐ |
-| 🔤 Strings | palindromes, counting, transformations | ⭐⭐ |
+| 📦 Arrays and matrices | C arrays, `std::vector`, traversal, rotation, spiral output | ⭐⭐ |
+| 🔤 Strings | `std::string`, palindromes, counting, transformations | ⭐⭐ |
 | 🔁 Recursion | permutations, combinations, backtracking | ⭐⭐⭐ |
-| 📊 Sorting and searching | binary search, custom sorting | ⭐⭐ |
+| 📊 Sorting and searching | `std::sort`, comparators, binary search | ⭐⭐ |
 | 🧮 Dynamic programming | longest common subsequence, knapsack | ⭐⭐⭐ |
 
 <!-- TODO: align this table with the topics that actually exist in the repo -->
@@ -143,7 +146,7 @@ flowchart LR
 |---|---|
 | Total tasks | TODO |
 | Exam periods covered | TODO |
-| Languages | TODO |
+| Language | C++17 |
 
 ---
 
@@ -153,9 +156,10 @@ Contributions are welcome: new tasks, better solutions, bug fixes and translatio
 
 1. Fork the repository
 2. Create a branch: `git checkout -b add-task-2024-june`
-3. Add the task to the matching folder, following the existing structure
-4. `git commit -m "Add task 3 (June 2024)"`
-5. Open a Pull Request
+3. Add the task to the matching folder, following the existing structure (`task.md`, `solution.cpp`, `test/`)
+4. Make sure it compiles without warnings and `make test` passes
+5. `git commit -m "Add task 3 (June 2024)"`
+6. Open a Pull Request
 
 ---
 
